@@ -3,6 +3,10 @@ const mongooseDelete = require("mongoose-delete");
 
 const userSchema = new mongoose.Schema(
   {
+    creditos2: {
+     type: Number,
+      default: 300,
+    },
     name: {
       type: String,
     },
@@ -13,21 +17,17 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       select: false,
-     
     },
     role: {
       type: String,
       enum: ["admin", "user"], //asigna los roles que puede tener el usuario
       default: "user",
     },
-    credits: {
-      type: Number,
-      default: 300,
-    }
+
   },
   {
     timestamps: false, //TODO añade createdAt y updatedAt
-    versionKey: false
+    versionKey: false,
   }
 );
 userSchema.plugin(mongooseDelete, { overrideMethods: "all" });

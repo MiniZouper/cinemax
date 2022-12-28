@@ -26,7 +26,7 @@ const loginCtr = async (req, res) => {
     req = matchedData(req);
     const user = await usersModel
       .findOne({ email: req.email })
-      .select("password name role email");
+      .select("password name role email creditos2 ");
     if (!user) {
       haddleHttpError(res, "Email no encontrado", 403);
       return;
